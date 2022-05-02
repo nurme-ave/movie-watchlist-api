@@ -1,0 +1,113 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100w;
+  height: auto;
+  background-color: #000;
+}
+
+.section-container {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  height: auto;
+}
+
+.header {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5em;
+  width: 100%;
+  height: 40vh;
+  background-image: url('/andre-tan-THJJRUhNlEc-unsplash.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top 25%;
+  background-color: rgba(0, 0, 0, 0.8);
+  background-blend-mode: darken;
+  color: #fff;
+  position: relative;
+}
+
+.p-find-your-film {
+  font-size: 2.7rem;
+  font-weight: 800;
+}
+
+.p-my-watchlist {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.search-bar {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 50%);
+  width: 70%;
+  height: 4em;
+  padding-left: 3em;
+  border: 1px solid #D1D5DB;
+  border-radius: .375em;
+  background-color: #fff;
+}
+
+.search-bar:focus {
+  border: 1px solid #90dbf4;
+  outline: #90dbf4;
+}
+
+.search-bar::placeholder {
+  font-size: 1rem;
+  color: #D1D5DB;
+}
+
+.search-bar:focus::placeholder {
+  color: transparent;
+}
+
+.icon-magn-glass {
+  position: absolute;
+  left: 16%;
+  bottom: 0;
+  transform: translate(50%, 50%);
+  color: #9CA3AF;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5em;
+  padding: 7em 5em 5em;
+  width: 100%;
+  min-height: 60vh;
+  background-color: #fff;
+}
+
+.contentDiv {
+  display: flex;
+  justify-content: flex-start;
+  gap: 5em;
+  padding-bottom: 5em;
+  width: 100%;
+  border-bottom: 1px solid lightgray;
+}
+
+img {
+  border-radius: .375em;
+}
