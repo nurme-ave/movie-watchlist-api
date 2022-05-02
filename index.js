@@ -1,7 +1,14 @@
-async function getMovieDetails() {
+const userInput = document.getElementById('user-input');
+
+document.getElementById('form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  getMovieDetails(userInput.value)
+});
+
+async function getMovieDetails(input) {
   try {
     const response = await fetch(
-      'http://www.omdbapi.com/?apikey=f7c0d604&s=lego'
+      `http://www.omdbapi.com/?apikey=f7c0d604&s=${input}`
     );
     const movieDetails = await response.json();
     renderMovieDetails(movieDetails);
@@ -10,11 +17,8 @@ async function getMovieDetails() {
   }
 }
 
-getMovieDetails();
 
 function renderMovieDetails(details) {
-  console.log(details.Search.Poster)
-  console.log(details.Search)
   let detailsHtml = '';
   detailsHtml = details.Search.map((detail) => {
     return `
