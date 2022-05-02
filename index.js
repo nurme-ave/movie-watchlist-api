@@ -1,8 +1,7 @@
-const userInput = document.getElementById('user-input');
-
 document.getElementById('form').addEventListener('submit', (e) => {
   e.preventDefault();
-  getMovieDetails(userInput.value)
+  const userInput = document.getElementById('user-input');
+  getMovieDetails(userInput.value);
 });
 
 async function getMovieDetails(input) {
@@ -14,9 +13,10 @@ async function getMovieDetails(input) {
     renderMovieDetails(movieDetails);
   } catch (err) {
     console.error(err);
+    document.getElementById('no-content').textContent =
+      "Unable to find what you're looking for. Please try another search.";
   }
 }
-
 
 function renderMovieDetails(details) {
   let detailsHtml = '';
@@ -26,9 +26,7 @@ function renderMovieDetails(details) {
         <img src='${detail.Poster}'>
         <p class=contentP>${detail.Title}</p>
       </div>
-    `
-  })
+    `;
+  });
   document.getElementById('content').innerHTML = detailsHtml.join('');
 }
-
-

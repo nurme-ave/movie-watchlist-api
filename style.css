@@ -90,7 +90,7 @@ body {
 .content {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   gap: 5em;
   padding: 7em 5em 5em;
@@ -110,4 +110,10 @@ body {
 
 img {
   border-radius: .375em;
+}
+
+.no-content > * {
+  font-size: 3rem;
+  text-align: center;
+  color: #DFDDDD;
 }
