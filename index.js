@@ -52,16 +52,14 @@ function renderMovieDetails(details) {
   console.log(details);
   for (let detail of details) {
     detailsHtml += `
-      <div class="contentDiv">
-        <img src='${detail.Poster}'>
-        <div class=contentP>
-          <p>Title: ${detail.Title}</p>
-          <p>Runtime: ${detail.Runtime}</p>
-          <p>Rating: ${detail.imdbRating}</p>
-          <p>Genres: ${detail.Genre}</p>
-          <p>${detail.Plot}</p>
-        </div>
+    <div class="contentDiv">
+      <img src='${detail.Poster}'>
+      <div class=contentP>
+        <p class="title">${detail.Title} <span class="rating">⭐ ${detail.imdbRating}</span></p>
+        <p class="runtime">${detail.Runtime} <span class="genre">${detail.Genre}</span></p>
+        <p class="plot">${detail.Plot}</p>
       </div>
+    </div>
     `;
   }
   document.getElementById('content').innerHTML = detailsHtml;
