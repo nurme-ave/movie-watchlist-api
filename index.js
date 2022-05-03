@@ -13,7 +13,7 @@ async function getMovieId(input) {
   const arrMoviesId = [];
   try {
     const response = await fetch(
-      `https://www.omdbapi.com/?s=${input}&plot=short&type=movie&apikey=f7c0d604`
+      `https://www.omdbapi.com/?s=${input}&plot=full&type=movie&apikey=f7c0d604`
     );
     const moviesData = await response.json();
     const movies = moviesData.Search;
@@ -32,7 +32,7 @@ async function getMovieDetails(arr) {
   try {
     for (let item of arr) {
       const res = await fetch(
-        `https://www.omdbapi.com/?i=${item}&plot=short&type=movie&apikey=f7c0d604`
+        `https://www.omdbapi.com/?i=${item}&plot=full&type=movie&apikey=f7c0d604`
       );
       movieDetails = await res.json();
       arrmovieDetails.push(movieDetails);

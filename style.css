@@ -14,15 +14,14 @@ body {
   justify-content: center;
   align-items: flex-start;
   width: 100w;
-  height: auto;
   background-color: #000;
 }
 
 .section-container {
   display: flex;
   flex-direction: column;
-  width: 70%;
-  height: auto;
+  width: 75%;
+  max-width: 1200px;
 }
 
 .header {
@@ -93,7 +92,7 @@ body {
   justify-content: center;
   align-items: center;
   gap: 5em;
-  padding: 7em 5em 5em;
+  padding: 6.25em 5em 5em;
   width: 100%;
   min-height: 60vh;
   background-color: #fff;
@@ -102,7 +101,7 @@ body {
 .contentDiv {
   display: flex;
   justify-content: flex-start;
-  gap: 5em;
+  gap: 3em;
   padding-bottom: 5em;
   width: 100%;
   border-bottom: 1px solid lightgray;
@@ -112,11 +111,12 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1em;
-  width: 40%;
+  width: 55%;
 }
 
 img {
   border-radius: .375em;
+  width: 25%;
 }
 
 .no-content > * {
@@ -127,7 +127,7 @@ img {
 
 .title {
   position: relative;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 500;
 }
 
