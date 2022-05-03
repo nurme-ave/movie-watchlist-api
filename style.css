@@ -117,6 +117,7 @@ body {
 img {
   border-radius: .375em;
   width: 25%;
+  height: 100%;
 }
 
 .no-content > * {
@@ -139,7 +140,7 @@ img {
   
 .rating,
 .runtime {
-  font-size: 1rem;
+  font-size: .9rem;
   font-weight: 400;
   color: #111827;
 }
@@ -149,7 +150,7 @@ img {
 }
 
 .plot {
-  font-size: 1rem;
+  font-size: .9rem;
   font-weight: 400;
   line-height: 1.5;
   color: #6B7280;
