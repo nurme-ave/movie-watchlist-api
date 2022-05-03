@@ -108,6 +108,10 @@ body {
   border-bottom: 1px solid lightgray;
 }
 
+.contentP {
+  width: 40%;
+}
+
 img {
   border-radius: .375em;
 }

@@ -1,16 +1,41 @@
+const arrMoviesId = [];
+let detailsHtml = '';
+
+
 document.getElementById('form').addEventListener('submit', (e) => {
   e.preventDefault();
   const userInput = document.getElementById('user-input');
-  getMovieDetails(userInput.value);
+  getMovieId(userInput.value);
 });
 
-async function getMovieDetails(input) {
+async function getMovieId(input) {
   try {
     const response = await fetch(
-      `http://www.omdbapi.com/?apikey=f7c0d604&s=${input}`
+      `https://www.omdbapi.com/?s=${input}&plot=short&type=movie&apikey=f7c0d604`
     );
-    const movieDetails = await response.json();
-    renderMovieDetails(movieDetails);
+    const moviesData = await response.json();
+    const movies = moviesData.Search;
+    movies.map((movie) => {
+      let movieId = movie.imdbID;
+      console.log(movieId);
+      arrMoviesId.push(movieId);
+
+      fetch(`https://www.omdbapi.com/?i=${movieId}&plot=short&type=movie&apikey=f7c0d604`)
+      .then(res => res.json())
+      .then(data => {
+        // renderMovieDetails(data);
+        detailsHtml += `
+          <div class="contentDiv">
+            <img src='${data.Poster}'>
+            <p class=contentP>${data.Plot}</p>
+          </div>
+        `
+        document.getElementById('content').innerHTML = detailsHtml;
+      })
+      
+      detailsHtml = '';
+    })
+
   } catch (err) {
     console.error(err);
     document.getElementById('no-content').textContent =
@@ -18,15 +43,17 @@ async function getMovieDetails(input) {
   }
 }
 
-function renderMovieDetails(details) {
-  let detailsHtml = '';
-  detailsHtml = details.Search.map((detail) => {
-    return `
-      <div class="contentDiv">
-        <img src='${detail.Poster}'>
-        <p class=contentP>${detail.Title}</p>
-      </div>
-    `;
-  });
-  document.getElementById('content').innerHTML = detailsHtml.join('');
-}
+// function renderMovieDetails(details) {
+//   let detailsHtml = '';
+//   console.log(details);
+//   for (let detail of arrMoviesId) {
+//     console.log(detail)
+//     detailsHtml += `
+//         <div class="contentDiv">
+//           <img src='${detail.Poster}'>
+//           <p class=contentP>${detail.Plot}</p>
+//         </div>
+//       `;
+//   }
+//   document.getElementById('content').innerHTML = detailsHtml;
+// }
