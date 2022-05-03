@@ -19,10 +19,8 @@ async function getMovieId(input) {
     const movies = moviesData.Search;
     movies.map((movie) => {
       let movieId = movie.imdbID;
-      console.log(movieId);
       arrMoviesId.push(movieId);
     });
-    console.log(arrMoviesId)
     getMovieDetails(arrMoviesId);
   } catch (err) {
     console.error(err);
@@ -30,7 +28,6 @@ async function getMovieId(input) {
 }
 
 async function getMovieDetails(arr) {
-  console.log(arr);
   const arrmovieDetails = [];
   try {
     for (let item of arr) {
@@ -40,7 +37,6 @@ async function getMovieDetails(arr) {
       movieDetails = await res.json();
       arrmovieDetails.push(movieDetails);
     }
-    console.log(arrmovieDetails);
     renderMovieDetails(arrmovieDetails);
   } catch (err) {
     console.error(err);
@@ -49,9 +45,8 @@ async function getMovieDetails(arr) {
 
 function renderMovieDetails(details) {
   let detailsHtml = '';
-  console.log(details);
-  for (let detail of details) {
-    detailsHtml += `
+  detailsHtml += details.map( (detail) => {
+    return `
     <div class="contentDiv">
       <img src='${detail.Poster}'>
       <div class=contentP>
@@ -61,6 +56,6 @@ function renderMovieDetails(details) {
       </div>
     </div>
     `;
-  }
+  }).join('')
   document.getElementById('content').innerHTML = detailsHtml;
 }
