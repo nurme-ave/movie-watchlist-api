@@ -51,7 +51,8 @@ function renderMovieDetails(details) {
       <img src='${detail.Poster}'>
       <div class=contentP>
         <p class="title">${detail.Title} <span class="rating">⭐ ${detail.imdbRating}</span></p>
-        <p class="runtime">${detail.Runtime} <span class="genre">${detail.Genre}</span></p>
+        <p class="runtime">${detail.Runtime} <span class="genre">${detail.Genre}</span>
+          <button class="add-button"><i class="fa-solid fa-circle-plus"></i> Watchlist</button></p>
         <p class="plot">${detail.Plot}</p>
       </div>
     </div>

@@ -49,6 +49,12 @@ body {
 .p-my-watchlist {
   font-size: 1rem;
   font-weight: 700;
+  cursor: pointer;
+}
+
+.p-my-watchlist a {
+  text-decoration: none;
+  color: #fff;
 }
 
 .search-bar {
@@ -91,7 +97,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 5em;
+  gap: 4em;
   padding: 6.25em 5em 5em;
   width: 100%;
   min-height: 60vh;
@@ -101,8 +107,8 @@ body {
 .contentDiv {
   display: flex;
   justify-content: flex-start;
-  gap: 3em;
-  padding-bottom: 5em;
+  gap: 4em;
+  padding-bottom: 4em;
   width: 100%;
   border-bottom: 1px solid lightgray;
 }
@@ -139,14 +145,22 @@ img {
 }
   
 .rating,
-.runtime {
+.runtime,
+.add-button {
   font-size: .9rem;
   font-weight: 400;
   color: #111827;
 }
 
 .genre {
-  margin: 0 3em 0 1em;
+  margin: 0 2em 0 1em;
+}
+
+.add-button {
+  font-family: 'Inter', sans-serif;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 .plot {
