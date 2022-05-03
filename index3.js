@@ -1,12 +1,7 @@
 document.getElementById('form').addEventListener('submit', (e) => {
   e.preventDefault();
   const userInput = document.getElementById('user-input');
-  if (userInput.value) {
-    getMovieId(userInput.value);
-  } else {
-    document.getElementById('no-content').textContent =
-    "Please type in the name of the movie you would like to search for.";
-  }
+  getMovieId(userInput.value);
 });
 
 async function getMovieId(input) {
@@ -22,9 +17,10 @@ async function getMovieId(input) {
       console.log(movieId);
       arrMoviesId.push(movieId);
     });
-    console.log(arrMoviesId)
     getMovieDetails(arrMoviesId);
   } catch (err) {
+    document.getElementById('no-content').innerHTML =
+    "Unable to find what you're looking for. Please try another search.";
     console.error(err);
   }
 }
@@ -44,6 +40,8 @@ async function getMovieDetails(arr) {
     renderMovieDetails(arrmovieDetails);
   } catch (err) {
     console.error(err);
+    document.getElementById('no-content').innerHTML =
+      "Unable to find what you're looking for. Please try another search.";
   }
 }
 
@@ -54,13 +52,7 @@ function renderMovieDetails(details) {
     detailsHtml += `
       <div class="contentDiv">
         <img src='${detail.Poster}'>
-        <div class=contentP>
-          <p>Title: ${detail.Title}</p>
-          <p>Runtime: ${detail.Runtime}</p>
-          <p>Rating: ${detail.imdbRating}</p>
-          <p>Genres: ${detail.Genre}</p>
-          <p>${detail.Plot}</p>
-        </div>
+        <p class=contentP>${detail.Plot}</p>
       </div>
     `;
   }
