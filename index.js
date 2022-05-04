@@ -8,12 +8,27 @@ document.getElementById('form').addEventListener('submit', (e) => {
   e.preventDefault();
   const userInput = document.getElementById('user-input');
   if (userInput.value) {
-    doSomething(userInput.value)
+    displaySearchResults(userInput.value)
   } else {
     document.getElementById('no-content').textContent =
     "Please type in the name of the movie you would like to search for.";
   }
 });
+
+async function displaySearchResults(value) {
+  const getId = await getMovieId(value)
+  const getDetails = await getMovieDetails(getId)
+  renderMovieDetails(getDetails)
+}
+
+async function addToWatchlist(e) {
+  const target = e.target;
+  if (target.tagName === 'BUTTON') {
+    myWatchlist.add(target.id);
+    console.log(myWatchlist)
+    await getMovieDetails(myWatchlist);
+  }
+}
 
 async function getMovieId(input) {
   arrMoviesId = [];
@@ -65,19 +80,4 @@ function renderMovieDetails(details) {
     `;
   }).join('')
   document.getElementById('content').innerHTML = detailsHtml;
-}
-
-async function doSomething(ip) {
-  const getIdArr = await getMovieId(ip)
-  const getData = await getMovieDetails(getIdArr)
-  renderMovieDetails(getData)
-}
-
-async function addToWatchlist(e) {
-  const target = e.target;
-  if (target.tagName === 'BUTTON') {
-    myWatchlist.add(target.id);
-    console.log(myWatchlist)
-    await getMovieDetails(myWatchlist);
-  }
 }
