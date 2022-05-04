@@ -13,7 +13,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  width: 100w;
+  width: 100vw;
   background-color: #000;
 }
 

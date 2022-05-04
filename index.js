@@ -51,10 +51,8 @@ function renderMovieDetails(details) {
       <img src='${detail.Poster}'>
       <div class=contentP>
         <p class="title">${detail.Title} <span class="rating">⭐ ${detail.imdbRating}</span></p>
-        <div>
-          <p class="runtime">${detail.Runtime} <span class="genre">${detail.Genre}</span>
-            <button value="${detail.imdbID}" id="add-button" class="add-button"><i class="fa-solid fa-circle-plus"></i> Watchlist</button></p>
-        </div>
+        <p class="runtime">${detail.Runtime} <span class="genre">${detail.Genre}</span>
+          <button value="${detail.imdbID}" id="add-button" class="add-button"><i class="fa-solid fa-circle-plus"></i> Watchlist</button></p>
         <p class="plot">${detail.Plot}</p>
       </div>
     </div>
@@ -63,10 +61,12 @@ function renderMovieDetails(details) {
   document.getElementById('content').innerHTML = detailsHtml;
 }
 
-document.body.addEventListener('click', (e) => {
+document.getElementById('content').addEventListener('click', (e) => {
   const myWatchlist = [];
   const target = e.target;
   if (target.tagName === 'BUTTON') {
     console.log(target.value)
   }
 })
+
+
