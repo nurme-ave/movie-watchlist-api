@@ -8,24 +8,24 @@ document.getElementById('form').addEventListener('submit', (e) => {
   e.preventDefault();
   const userInput = document.getElementById('user-input');
   if (userInput.value) {
-    displaySearchResults(userInput.value)
+    displaySearchResults(userInput.value);
   } else {
     document.getElementById('no-content').textContent =
-    "Please type in the name of the movie you would like to search for.";
+      'Please type in the name of the movie you would like to search for.';
   }
 });
 
 async function displaySearchResults(value) {
-  const getId = await getMovieId(value)
-  const getDetails = await getMovieDetails(getId)
-  renderMovieDetails(getDetails)
+  const getId = await getMovieId(value);
+  const getDetails = await getMovieDetails(getId);
+  renderMovieDetails(getDetails);
 }
 
 async function addToWatchlist(e) {
   const target = e.target;
   if (target.tagName === 'BUTTON') {
     myWatchlist.add(target.id);
-    console.log(myWatchlist)
+    console.log(myWatchlist);
     await getMovieDetails(myWatchlist);
   }
 }
@@ -42,7 +42,7 @@ async function getMovieId(input) {
       const movieId = movie.imdbID;
       arrMoviesId.push(movieId);
     });
-    return arrMoviesId
+    return arrMoviesId;
   } catch (err) {
     // console.error(err);
   }
@@ -58,7 +58,7 @@ async function getMovieDetails(arr) {
       movieDetails = await res.json();
       arrmovieDetails.push(movieDetails);
     }
-    return arrmovieDetails
+    return arrmovieDetails;
   } catch (err) {
     // console.error(err);
   }
@@ -66,8 +66,9 @@ async function getMovieDetails(arr) {
 
 function renderMovieDetails(details) {
   let detailsHtml = '';
-  detailsHtml += details.map( (detail) => {
-    return `
+  detailsHtml += details
+    .map((detail) => {
+      return `
     <div id="contentDiv" class="contentDiv">
       <img src='${detail.Poster}'>
       <div class=contentP>
@@ -78,6 +79,7 @@ function renderMovieDetails(details) {
       </div>
     </div>
     `;
-  }).join('')
+    })
+    .join('');
   document.getElementById('content').innerHTML = detailsHtml;
 }
