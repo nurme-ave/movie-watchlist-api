@@ -21,11 +21,14 @@ async function displaySearchResults(value) {
   renderMovieDetails(getDetails);
 }
 
+
 async function addToWatchlist(e) {
+  JSON.parse(localStorage.getItem("watchlist"));
+  console.log(myWatchlist);
   const target = e.target;
   if (target.tagName === 'BUTTON') {
     myWatchlist.add(target.id);
-    console.log(myWatchlist);
+    localStorage.setItem("watchlist", JSON.stringify([...myWatchlist]));
     await getMovieDetails(myWatchlist);
   }
 }
