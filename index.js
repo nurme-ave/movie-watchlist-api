@@ -1,8 +1,14 @@
+let arrMoviesId = [];
+let arrmovieDetails = [];
+const myWatchlist = new Set();
+
+document.getElementById('content').addEventListener('click', addToWatchlist);
+
 document.getElementById('form').addEventListener('submit', (e) => {
   e.preventDefault();
   const userInput = document.getElementById('user-input');
   if (userInput.value) {
-    getMovieId(userInput.value);
+    doSomething(userInput.value)
   } else {
     document.getElementById('no-content').textContent =
     "Please type in the name of the movie you would like to search for.";
@@ -10,7 +16,7 @@ document.getElementById('form').addEventListener('submit', (e) => {
 });
 
 async function getMovieId(input) {
-  let arrMoviesId = [];
+  arrMoviesId = [];
   try {
     const response = await fetch(
       `https://www.omdbapi.com/?s=${input}&plot=full&type=movie&apikey=f7c0d604`
@@ -21,14 +27,14 @@ async function getMovieId(input) {
       const movieId = movie.imdbID;
       arrMoviesId.push(movieId);
     });
-    getMovieDetails(arrMoviesId);
+    return arrMoviesId
   } catch (err) {
     // console.error(err);
   }
 }
 
 async function getMovieDetails(arr) {
-  const arrmovieDetails = [];
+  arrmovieDetails = [];
   try {
     for (let item of arr) {
       const res = await fetch(
@@ -37,7 +43,7 @@ async function getMovieDetails(arr) {
       movieDetails = await res.json();
       arrmovieDetails.push(movieDetails);
     }
-    renderMovieDetails(arrmovieDetails);
+    return arrmovieDetails
   } catch (err) {
     // console.error(err);
   }
@@ -52,7 +58,7 @@ function renderMovieDetails(details) {
       <div class=contentP>
         <p class="title">${detail.Title} <span class="rating">⭐ ${detail.imdbRating}</span></p>
         <p class="runtime">${detail.Runtime} <span class="genre">${detail.Genre}</span>
-          <button value="${detail.imdbID}" id="add-button" class="add-button"><i class="fa-solid fa-circle-plus"></i> Watchlist</button></p>
+          <button id="${detail.imdbID}" class="add-button"><i class="fa-solid fa-circle-plus"></i> Watchlist</button></p>
         <p class="plot">${detail.Plot}</p>
       </div>
     </div>
@@ -61,12 +67,17 @@ function renderMovieDetails(details) {
   document.getElementById('content').innerHTML = detailsHtml;
 }
 
-document.getElementById('content').addEventListener('click', (e) => {
-  const myWatchlist = [];
+async function doSomething(ip) {
+  const getIdArr = await getMovieId(ip)
+  const getData = await getMovieDetails(getIdArr)
+  renderMovieDetails(getData)
+}
+
+async function addToWatchlist(e) {
   const target = e.target;
   if (target.tagName === 'BUTTON') {
-    console.log(target.value)
+    myWatchlist.add(target.id);
+    console.log(myWatchlist)
+    await getMovieDetails(myWatchlist);
   }
-})
-
-
+}
