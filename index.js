@@ -1,6 +1,5 @@
 let arrMoviesId = [];
 let arrmovieDetails = [];
-const myWatchlist = new Set();
 
 document.getElementById('content').addEventListener('click', addToWatchlist);
 
@@ -22,15 +21,21 @@ async function displaySearchResults(value) {
 }
 
 
+const myWatchlist = JSON.parse(localStorage.getItem("watchlist")) || [];
+console.log(myWatchlist)
+
 async function addToWatchlist(e) {
-  JSON.parse(localStorage.getItem("watchlist"));
-  console.log(myWatchlist);
   const target = e.target;
   if (target.tagName === 'BUTTON') {
-    myWatchlist.add(target.id);
-    localStorage.setItem("watchlist", JSON.stringify([...myWatchlist]));
-    await getMovieDetails(myWatchlist);
+    if (!myWatchlist.includes(target.id)) {
+      myWatchlist.push(target.id);
+      console.log(myWatchlist)
+    }
+    
+    // const getDetailsMoviewatchlist = await getMovieDetails(myWatchlist);
+    // renderMovieWatchlist(getDetailsMoviewatchlist);
   }
+  localStorage.setItem("watchlist", JSON.stringify(myWatchlist));
 }
 
 async function getMovieId(input) {
