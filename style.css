@@ -46,13 +46,13 @@ body {
   font-weight: 800;
 }
 
-.p-my-watchlist {
+.link-my-watchlist {
   font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
 }
 
-.p-my-watchlist a {
+.link-my-watchlist a {
   text-decoration: none;
   color: #fff;
 }
@@ -170,3 +170,17 @@ img {
   color: #6B7280;
 }
 
+.p-watchlist {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-align: center;
+  margin-bottom: 1em;
+  color: #DFDDDD;
+}
+
+.p-lets-add-some-movies {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #363636;
+}
