@@ -10,7 +10,7 @@ document.getElementById('form').addEventListener('submit', (e) => {
 });
 
 async function getMovieId(input) {
-  const arrMoviesId = [];
+  let arrMoviesId = [];
   try {
     const response = await fetch(
       `https://www.omdbapi.com/?s=${input}&plot=full&type=movie&apikey=f7c0d604`
@@ -18,12 +18,12 @@ async function getMovieId(input) {
     const moviesData = await response.json();
     const movies = moviesData.Search;
     movies.map((movie) => {
-      let movieId = movie.imdbID;
+      const movieId = movie.imdbID;
       arrMoviesId.push(movieId);
     });
     getMovieDetails(arrMoviesId);
   } catch (err) {
-    console.error(err);
+    // console.error(err);
   }
 }
 
@@ -39,7 +39,7 @@ async function getMovieDetails(arr) {
     }
     renderMovieDetails(arrmovieDetails);
   } catch (err) {
-    console.error(err);
+    // console.error(err);
   }
 }
 
@@ -47,12 +47,14 @@ function renderMovieDetails(details) {
   let detailsHtml = '';
   detailsHtml += details.map( (detail) => {
     return `
-    <div class="contentDiv">
+    <div id="contentDiv" class="contentDiv">
       <img src='${detail.Poster}'>
       <div class=contentP>
         <p class="title">${detail.Title} <span class="rating">⭐ ${detail.imdbRating}</span></p>
-        <p class="runtime">${detail.Runtime} <span class="genre">${detail.Genre}</span>
-          <button class="add-button"><i class="fa-solid fa-circle-plus"></i> Watchlist</button></p>
+        <div>
+          <p class="runtime">${detail.Runtime} <span class="genre">${detail.Genre}</span>
+            <button value="${detail.imdbID}" id="add-button" class="add-button"><i class="fa-solid fa-circle-plus"></i> Watchlist</button></p>
+        </div>
         <p class="plot">${detail.Plot}</p>
       </div>
     </div>
@@ -60,3 +62,11 @@ function renderMovieDetails(details) {
   }).join('')
   document.getElementById('content').innerHTML = detailsHtml;
 }
+
+document.body.addEventListener('click', (e) => {
+  const myWatchlist = [];
+  const target = e.target;
+  if (target.tagName === 'BUTTON') {
+    console.log(target.value)
+  }
+})
