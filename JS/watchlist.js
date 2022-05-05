@@ -3,9 +3,11 @@ import { getMovieDetails } from "./index.js";
 document.getElementById('form').style.visibility = 'hidden';
 
 const getLocalStorageData = JSON.parse(localStorage.getItem("watchlist"));
-const movieData = await getMovieDetails(getLocalStorageData);
 
-renderMovieDetails(movieData);
+if (getLocalStorageData) {
+  const movieData = await getMovieDetails(getLocalStorageData);
+  renderMovieDetails(movieData);
+}
 
 function renderMovieDetails(details) {
   let detailsHtml = '';
