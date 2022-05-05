@@ -63,7 +63,7 @@ async function getMovieDetails(arr) {
       const res = await fetch(
         `https://www.omdbapi.com/?i=${item}&plot=full&type=movie&apikey=f7c0d604`
       );
-      movieDetails = await res.json();
+      const movieDetails = await res.json();
       arrmovieDetails.push(movieDetails);
     }
     return arrmovieDetails;
