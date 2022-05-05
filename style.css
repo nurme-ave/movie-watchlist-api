@@ -57,6 +57,10 @@ body {
   color: #fff;
 }
 
+form {
+  display: unset;
+}
+
 .search-bar {
   position: absolute;
   left: 50%;

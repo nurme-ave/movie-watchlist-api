@@ -1,24 +1,11 @@
-const someList = JSON.parse(localStorage.getItem("watchlist"));
+import { getMovieDetails } from "./index.js";
 
+document.getElementById('form').style.visibility = 'hidden';
 
-async function getMovieDetails(arr) {
-  arrmovieDetails = [];
-  try {
-    for (let item of arr) {
-      const res = await fetch(
-        `https://www.omdbapi.com/?i=${item}&plot=full&type=movie&apikey=f7c0d604`
-      );
-      const movieDetails = await res.json();
-      arrmovieDetails.push(movieDetails);
-    }
-    renderMovieDetails(arrmovieDetails);
-  } catch (err) {
-    // console.error(err);
-  }
-}
+const getLocalStorageData = JSON.parse(localStorage.getItem("watchlist"));
+const movieData = await getMovieDetails(getLocalStorageData);
 
-getMovieDetails(someList);
-
+renderMovieDetails(movieData);
 
 function renderMovieDetails(details) {
   let detailsHtml = '';

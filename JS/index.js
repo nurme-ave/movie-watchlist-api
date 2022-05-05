@@ -1,5 +1,4 @@
-let arrMoviesId = [];
-let arrmovieDetails = [];
+document.getElementById('form').style.visibility = 'visible';
 
 document.getElementById('content').addEventListener('click', addToWatchlist);
 
@@ -22,24 +21,19 @@ async function displaySearchResults(value) {
 
 
 const myWatchlist = JSON.parse(localStorage.getItem("watchlist")) || [];
-console.log(myWatchlist)
 
 async function addToWatchlist(e) {
   const target = e.target;
   if (target.tagName === 'BUTTON') {
     if (!myWatchlist.includes(target.id)) {
       myWatchlist.push(target.id);
-      console.log(myWatchlist)
     }
-    
-    // const getDetailsMoviewatchlist = await getMovieDetails(myWatchlist);
-    // renderMovieWatchlist(getDetailsMoviewatchlist);
   }
   localStorage.setItem("watchlist", JSON.stringify(myWatchlist));
 }
 
 async function getMovieId(input) {
-  arrMoviesId = [];
+  const arrMoviesId = [];
   try {
     const response = await fetch(
       `https://www.omdbapi.com/?s=${input}&plot=full&type=movie&apikey=f7c0d604`
@@ -57,7 +51,7 @@ async function getMovieId(input) {
 }
 
 async function getMovieDetails(arr) {
-  arrmovieDetails = [];
+  const arrmovieDetails = [];
   try {
     for (let item of arr) {
       const res = await fetch(
@@ -91,3 +85,5 @@ function renderMovieDetails(details) {
     .join('');
   document.getElementById('content').innerHTML = detailsHtml;
 }
+
+export { getMovieDetails };
