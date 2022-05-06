@@ -19,7 +19,6 @@ async function displaySearchResults(value) {
   renderMovieDetails(getDetails);
 }
 
-
 const myWatchlist = JSON.parse(localStorage.getItem("watchlist")) || [];
 
 function addToWatchlist(e) {
