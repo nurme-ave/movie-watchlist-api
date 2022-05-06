@@ -56,7 +56,7 @@ body {
   width: 25%;
 }
 
-.button-link {
+.link-navigate-pages {
   padding: 1em;
   font-size: 1rem;
   font-weight: 700;
@@ -66,17 +66,17 @@ body {
   cursor: pointer;
 }
 
-.button-link:hover {
+.link-navigate-pages:hover {
   background-color: #8ac926;
 }
 
-.button-link a {
+.link-navigate-pages a {
   padding: 1em;
   text-decoration: none;
   color: #000;
 }
 
-.button-link a:hover {
+.link-navigate-pages a:hover {
   color: #fff;
 }
 
