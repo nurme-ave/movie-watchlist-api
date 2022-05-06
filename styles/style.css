@@ -41,7 +41,7 @@ body {
   position: relative;
 }
 
-.h1-find-your-film {
+.h1-title {
   font-size: 3.25rem;
   font-weight: 800;
 }
@@ -60,6 +60,7 @@ body {
 }
 
 .link-my-watchlist a {
+  padding: 1em;
   text-decoration: none;
   color: #000;
 }
