@@ -42,8 +42,18 @@ body {
 }
 
 .h1-title {
+  position: relative;
   font-size: 3.25rem;
   font-weight: 800;
+}
+
+.h1-title::before {
+  position: absolute;
+  content: '';
+  bottom: -5%;
+  right: 0;
+  border: 4px solid #8ac926;
+  width: 25%;
 }
 
 .link-my-watchlist {
@@ -56,13 +66,17 @@ body {
 }
 
 .link-my-watchlist:hover {
-  transform: scale(1.03);
+  background-color: #8ac926;
 }
 
 .link-my-watchlist a {
   padding: 1em;
   text-decoration: none;
   color: #000;
+}
+
+.link-my-watchlist a:hover {
+  color: #fff;
 }
 
 form {
