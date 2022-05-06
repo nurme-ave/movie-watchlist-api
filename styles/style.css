@@ -98,7 +98,7 @@ form {
 }
 
 .search-bar:focus {
-  border: 1px solid #90dbf4;
+  border: 2px solid #8ac926;
   outline: #90dbf4;
 }
 
