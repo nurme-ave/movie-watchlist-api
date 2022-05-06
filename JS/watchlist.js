@@ -1,4 +1,4 @@
-import { getMovieDetails, renderMovieDetails } from "./index2.js";
+import { getMovieDetails, renderMovieDetails } from "./index.js";
 
 document.getElementById('form').style.visibility = 'hidden';
 
