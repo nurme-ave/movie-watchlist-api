@@ -189,6 +189,11 @@ img {
   cursor: pointer;
 }
 
+.add-button:hover {
+  font-weight: 600;
+  color: #8ac926;
+}
+
 .plot {
   font-size: .9rem;
   font-weight: 400;
