@@ -8,7 +8,7 @@ function renderMovieDetails(details, sign='plus') {
       <div class=contentP>
         <p class="title">${detail.Title} <span class="rating">⭐ ${detail.imdbRating}</span></p>
         <p class="runtime">${detail.Runtime} <span class="genre">${detail.Genre}</span>
-          <button id="${detail.imdbID}" class="add-button"><i class="fa-solid fa-circle-${sign}"></i> Watchlist</button></p>
+          <button id="${detail.imdbID}" class="activity-button"><i class="fa-solid fa-circle-${sign}"></i> Watchlist</button></p>
         <p class="plot">${detail.Plot}</p>
       </div>
     </div>

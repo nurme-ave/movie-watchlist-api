@@ -56,26 +56,27 @@ body {
   width: 25%;
 }
 
-.link-my-watchlist {
+.button-link {
   padding: 1em;
   font-size: 1rem;
   font-weight: 700;
+  border: 0;
   border-radius: .375em;
   background-color: #fff;
   cursor: pointer;
 }
 
-.link-my-watchlist:hover {
+.button-link:hover {
   background-color: #8ac926;
 }
 
-.link-my-watchlist a {
+.button-link a {
   padding: 1em;
   text-decoration: none;
   color: #000;
 }
 
-.link-my-watchlist a:hover {
+.button-link a:hover {
   color: #fff;
 }
 
@@ -172,7 +173,7 @@ img {
   
 .rating,
 .runtime,
-.add-button {
+.activity-button {
   font-size: .9rem;
   font-weight: 400;
   color: #111827;
@@ -182,14 +183,18 @@ img {
   margin: 0 2em 0 1em;
 }
 
-.add-button {
+.activity-button {
   font-family: 'Inter', sans-serif;
   border: none;
   background-color: transparent;
   cursor: pointer;
 }
 
-.add-button:hover {
+.activity-button:active {
+  transform: scale(1.1);
+}
+
+.activity-button:hover {
   font-weight: 600;
   color: #8ac926;
 }
@@ -214,8 +219,4 @@ img {
   font-size: 1.1rem;
   font-weight: 700;
   color: #363636;
-}
-
-button:active {
-  transform: scale(1.1);
 }
