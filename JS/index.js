@@ -22,7 +22,7 @@ async function displaySearchResults(value) {
 
 const myWatchlist = JSON.parse(localStorage.getItem("watchlist")) || [];
 
-async function addToWatchlist(e) {
+function addToWatchlist(e) {
   const target = e.target;
   if (target.tagName === 'BUTTON') {
     if (!myWatchlist.includes(target.id)) {
