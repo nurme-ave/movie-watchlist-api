@@ -27,7 +27,6 @@ async function displaySearchResults(value) {
     renderMovieDetails(getDetails);
   } catch (err) {
     displayErrorMessage(err);
-    console.log('line 30');
   }
 }
 
