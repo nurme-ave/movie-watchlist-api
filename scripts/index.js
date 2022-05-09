@@ -14,7 +14,7 @@ document.getElementById('form').addEventListener('submit', (e) => {
     document.getElementById('preloader').classList.add('active');
     displaySearchResults(userInput.value);
   } else {
-    document.getElementById('no-content').textContent =
+    document.getElementById('content').textContent =
       'Please type in the name of the movie you would like to search for.';
   }
 });
