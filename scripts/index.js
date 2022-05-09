@@ -1,4 +1,4 @@
-import { getMovieId, getMovieDetails } from './api.js';
+import { getMovieId, getMovieDetails, displayErrorMessage } from './api.js';
 import { renderMovieDetails } from './render.js';
 
 const myWatchlist = JSON.parse(localStorage.getItem('watchlist')) || [];
@@ -25,9 +25,9 @@ async function displaySearchResults(value) {
     const getDetails = await getMovieDetails(getId);
     document.getElementById('preloader').classList.remove('active');
     renderMovieDetails(getDetails);
-  } catch {
-    console.log('Check for error logs');
-    document.getElementById('preloader').classList.remove('active');
+  } catch (err) {
+    displayErrorMessage(err);
+    console.log('line 30');
   }
 }
 

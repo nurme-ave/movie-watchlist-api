@@ -39,4 +39,4 @@ function displayErrorMessage(errMsg) {
     'Please check your input for spelling mistakes.';
 }
 
-export { getMovieId, getMovieDetails };
+export { getMovieId, getMovieDetails, displayErrorMessage };
