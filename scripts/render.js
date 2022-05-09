@@ -3,7 +3,6 @@ function renderMovieDetails(details, sign='plus') {
   detailsHtml += details
     .map((detail) => {
       return `
-    <div id="preloader" class="preloader">Loading...</div>
     <div id="contentDiv" class="contentDiv">
       <img src='${detail.Poster}'>
       <div class=contentP>
