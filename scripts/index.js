@@ -11,7 +11,7 @@ document.getElementById('form').addEventListener('submit', (e) => {
 
   const userInput = document.getElementById('user-input');
   if (userInput.value) {
-    document.getElementById('preloader').classList.add('active');
+    toggleSpinner();
     displaySearchResults(userInput.value);
   } else {
     document.getElementById('content').textContent =
@@ -23,7 +23,7 @@ async function displaySearchResults(value) {
   try {
     const getId = await getMovieId(value);
     const getDetails = await getMovieDetails(getId);
-    document.getElementById('preloader').classList.remove('active');
+    toggleSpinner();
     renderMovieDetails(getDetails);
   } catch (err) {
     displayErrorMessage(err);
@@ -38,4 +38,9 @@ function addToWatchlist(e) {
     }
   }
   localStorage.setItem('watchlist', JSON.stringify(myWatchlist));
+}
+
+function toggleSpinner() {
+  document.getElementById('spinner').classList.toggle('active');
+  document.getElementById('content').classList.toggle('active');
 }

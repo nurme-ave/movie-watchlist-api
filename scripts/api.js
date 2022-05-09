@@ -34,7 +34,6 @@ async function getMovieDetails(arr) {
 
 function displayErrorMessage(errMsg) {
   console.log(errMsg);
-  document.getElementById('preloader').classList.remove('active');
   document.getElementById('content').textContent =
     'Please check your input for spelling mistakes.';
 }
