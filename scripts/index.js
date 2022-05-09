@@ -41,6 +41,6 @@ function addToWatchlist(e) {
 }
 
 function toggleSpinner() {
-  document.getElementById('spinner').classList.toggle('active');
+  document.getElementById('green-spinner').classList.toggle('active');
   document.getElementById('content').classList.toggle('active');
 }

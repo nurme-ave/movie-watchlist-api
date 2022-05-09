@@ -138,22 +138,26 @@ form {
 }
 
 .spinner {
-  display: none;
+  position: relative;
+  display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  top: 40%;
-  left: 47%;
-  font-size: 5em;
-  color: #8ac926;
-  animation: spinner 1.5s ease infinite;
 }
 
-.spinner.active {
+.green-spinner {
+  display: none;
+  position: absolute;
+  top: 0;
+  font-size: 5em;
+  color: #8ac926;
+  animation: green-spinner 1.5s ease infinite;
+}
+
+.green-spinner.active {
   display: flex;
 }
 
-@keyframes spinner {
+@keyframes green-spinner {
 to {
     transform: rotate(360deg);
   }
