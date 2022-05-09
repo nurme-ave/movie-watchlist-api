@@ -8,8 +8,10 @@ document.getElementById('content').addEventListener('click', addToWatchlist);
 
 document.getElementById('form').addEventListener('submit', (e) => {
   e.preventDefault();
+
   const userInput = document.getElementById('user-input');
   if (userInput.value) {
+    document.getElementById('preloader').classList.add('active');
     displaySearchResults(userInput.value);
   } else {
     document.getElementById('no-content').textContent =
@@ -18,9 +20,15 @@ document.getElementById('form').addEventListener('submit', (e) => {
 });
 
 async function displaySearchResults(value) {
-  const getId = await getMovieId(value);
-  const getDetails = await getMovieDetails(getId);
-  renderMovieDetails(getDetails);
+  try {
+    const getId = await getMovieId(value);
+    const getDetails = await getMovieDetails(getId);
+    document.getElementById('preloader').classList.remove('active');
+    renderMovieDetails(getDetails);
+  } catch {
+    console.log('Check for error logs');
+    document.getElementById('preloader').classList.remove('active');
+  }
 }
 
 function addToWatchlist(e) {

@@ -131,6 +131,39 @@ form {
   background-color: #fff;
 }
 
+.preloader {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  font-size: 5em;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 1);
+  z-index: 100;
+  animation: pulse 2s infinite;
+}
+
+.preloader.active {
+  display: flex;
+  cursor: wait;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .contentDiv {
   display: flex;
   justify-content: flex-start;

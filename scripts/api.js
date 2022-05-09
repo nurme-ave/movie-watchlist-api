@@ -12,7 +12,7 @@ async function getMovieId(input) {
     });
     return arrMoviesId;
   } catch (err) {
-    console.error(err);
+    displayErrorMessage(err);
   }
 }
 
@@ -28,8 +28,15 @@ async function getMovieDetails(arr) {
     }
     return arrmovieDetails;
   } catch (err) {
-    console.error(err);
+    displayErrorMessage(err);
   }
+}
+
+function displayErrorMessage(errMsg) {
+  console.log(errMsg);
+  document.getElementById('preloader').classList.remove('active');
+  document.getElementById('content').textContent =
+    'Please check your input for spelling mistakes.';
 }
 
 export { getMovieId, getMovieDetails };
