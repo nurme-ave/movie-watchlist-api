@@ -29,8 +29,8 @@ async function getMoviesData(input) {
     if (err.name === 'AbortError') {
       document.getElementById('content').innerHTML = `
       <div class="error-messages-div">
-        <p>Sorry, it took too long to receive a response.</p>
-        <p>Please consider narrowing your search by using more keywords.</p>
+        <p>Sorry, the database took too long to receive a response.</p>
+        <p>Please try again.</p>
       </div>`
     } else {
       document.getElementById('content').textContent = 'Please check your spelling.'
