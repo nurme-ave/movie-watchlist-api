@@ -1,6 +1,6 @@
+const fetchController = new AbortController();
 
 async function getMovieId(input) {
-  const fetchController = new AbortController();
   const arrMoviesId = [];
   
   try {
@@ -8,13 +8,14 @@ async function getMovieId(input) {
     let timeOut = setTimeout( () => {
       fetchController.abort();
       console.log(fetchController.signal.aborted);
-    }, 10000);
+    }, 1000);
 
     const response = await fetch(
       `https://www.omdbapi.com/?s=${input}&plot=full&type=movie&apikey=f7c0d604`, { signal }
     );
     const moviesData = await response.json();
-    console.log('got the data back')
+    console.log(moviesData);
+    console.log('got the data back');
     console.log(fetchController.signal.aborted);
 
     clearTimeout(timeOut);
@@ -32,11 +33,21 @@ async function getMovieId(input) {
 async function getMovieDetails(arr) {
   const arrmovieDetails = [];
   try {
+    const { signal } = fetchController;
+    let timeOut = setTimeout( () => {
+      fetchController.abort();
+      console.log(fetchController.signal.aborted);
+    }, 1000);
+
     for (let item of arr) {
       const res = await fetch(
-        `https://www.omdbapi.com/?i=${item}&plot=full&type=movie&apikey=f7c0d604`
+        `https://www.omdbapi.com/?i=${item}&plot=full&type=movie&apikey=f7c0d604`, { signal }
       );
       const movieDetails = await res.json();
+      console.log('got the data back here too');
+      console.log(fetchController.signal.aborted);
+
+      clearTimeout(timeOut);
       arrmovieDetails.push(movieDetails);
     }
     return arrmovieDetails;
