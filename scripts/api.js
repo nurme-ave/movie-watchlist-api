@@ -1,16 +1,16 @@
 async function getMoviesData(input) {
-  // const fetchController = new AbortController();
+  const fetchController = new AbortController();
   const arrMovieIds = [];
   const arrMovieDetails = [];
 
-  // const { signal } = fetchController;
+  const { signal } = fetchController;
 
-  // let timer = setTimeout( () => {
-  //   fetchController.abort();
-  // }, 10000)
+  let timer = setTimeout( () => {
+    fetchController.abort();
+  }, 15000)
 
   try {
-    const moviesResponse = await fetch(`https://www.omdbapi.com/?s=${input}&plot=full&type=movie&apikey=f7c0d604`);
+    const moviesResponse = await fetch(`https://www.omdbapi.com/?s=${input}&plot=full&type=movie&apikey=f7c0d604`, { signal });
     const moviesObj = await moviesResponse.json();
     const moviesArr = moviesObj.Search;
 
@@ -19,11 +19,11 @@ async function getMoviesData(input) {
     });
 
     for (let movie of arrMovieIds) {
-      const movieResponse = await fetch(`https://www.omdbapi.com/?i=${movie}&plot=full&type=movie&apikey=f7c0d604`);
+      const movieResponse = await fetch(`https://www.omdbapi.com/?i=${movie}&plot=full&type=movie&apikey=f7c0d604`, { signal });
       const movieDetails = await movieResponse.json();
       arrMovieDetails.push(movieDetails);
     }
-    // clearTimeout(timer);
+    clearTimeout(timer);
     return arrMovieDetails;
   } catch (err) {
     if (err.name === 'AbortError') {
