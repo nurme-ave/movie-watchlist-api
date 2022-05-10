@@ -1,65 +1,41 @@
-const fetchController = new AbortController();
+async function getMoviesData(input) {
+  const fetchController = new AbortController();
+  const arrMovieIds = [];
+  const arrMovieDetails = [];
 
-async function getMovieId(input) {
-  const arrMoviesId = [];
-  
+  const { signal } = fetchController;
+
+  let timer = setTimeout( () => {
+    fetchController.abort();
+  }, 5000)
+
   try {
-    const { signal } = fetchController;
-    let timeOut = setTimeout( () => {
-      fetchController.abort();
-      console.log(fetchController.signal.aborted);
-    }, 1000);
+    const moviesResponse = await fetch(`https://www.omdbapi.com/?s=${input}&plot=full&type=movie&apikey=f7c0d604`, { signal });
+    const moviesObj = await moviesResponse.json();
+    const moviesArr = moviesObj.Search;
 
-    const response = await fetch(
-      `https://www.omdbapi.com/?s=${input}&plot=full&type=movie&apikey=f7c0d604`, { signal }
-    );
-    const moviesData = await response.json();
-    console.log(moviesData);
-    console.log('got the data back');
-    console.log(fetchController.signal.aborted);
-
-    clearTimeout(timeOut);
-    const movies = moviesData.Search;
-    movies.map((movie) => {
-      const movieId = movie.imdbID;
-      arrMoviesId.push(movieId);
+    moviesArr.map((movieId) => {
+      arrMovieIds.push(movieId.imdbID);
     });
-    return arrMoviesId;
-  } catch (err) {
-    displayErrorMessage(err);
-  }
-}
 
-async function getMovieDetails(arr) {
-  const arrmovieDetails = [];
-  try {
-    const { signal } = fetchController;
-    let timeOut = setTimeout( () => {
-      fetchController.abort();
-      console.log(fetchController.signal.aborted);
-    }, 1000);
-
-    for (let item of arr) {
-      const res = await fetch(
-        `https://www.omdbapi.com/?i=${item}&plot=full&type=movie&apikey=f7c0d604`, { signal }
-      );
-      const movieDetails = await res.json();
-      console.log('got the data back here too');
-      console.log(fetchController.signal.aborted);
-
-      clearTimeout(timeOut);
-      arrmovieDetails.push(movieDetails);
+    for (let movie of arrMovieIds) {
+      const movieResponse = await fetch(`https://www.omdbapi.com/?i=${movie}&plot=full&type=movie&apikey=f7c0d604`, { signal });
+      const movieDetails = await movieResponse.json();
+      arrMovieDetails.push(movieDetails);
     }
-    return arrmovieDetails;
+    clearTimeout(timer);
+    return arrMovieDetails;
   } catch (err) {
-    displayErrorMessage(err);
+    if (err.name === 'AbortError') {
+      document.getElementById('content').innerHTML = `
+      <div class="error-messages-div">
+        <p>Sorry, it took too long to receive a response.</p>
+        <p>Please consider narrowing your search by using more keywords.</p>
+      </div>`
+    } else {
+      document.getElementById('content').textContent = 'Please check your spelling.'
+    }
   }
 }
 
-function displayErrorMessage(errMsg) {
-  console.log(errMsg);
-  document.getElementById('content').textContent =
-    'Please try again.';
-}
-
-export { getMovieId, getMovieDetails, displayErrorMessage };
+export { getMoviesData };
