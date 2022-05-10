@@ -7,7 +7,7 @@ async function getMoviesData(input) {
 
   let timer = setTimeout( () => {
     fetchController.abort();
-  }, 5000)
+  }, 10000)
 
   try {
     const moviesResponse = await fetch(`https://www.omdbapi.com/?s=${input}&plot=full&type=movie&apikey=f7c0d604`, { signal });
