@@ -1,10 +1,23 @@
+
 async function getMovieId(input) {
+  const fetchController = new AbortController();
   const arrMoviesId = [];
+  
   try {
+    const { signal } = fetchController;
+    let timeOut = setTimeout( () => {
+      fetchController.abort();
+      console.log(fetchController.signal.aborted);
+    }, 10000);
+
     const response = await fetch(
-      `https://www.omdbapi.com/?s=${input}&plot=full&type=movie&apikey=f7c0d604`
+      `https://www.omdbapi.com/?s=${input}&plot=full&type=movie&apikey=f7c0d604`, { signal }
     );
     const moviesData = await response.json();
+    console.log('got the data back')
+    console.log(fetchController.signal.aborted);
+
+    clearTimeout(timeOut);
     const movies = moviesData.Search;
     movies.map((movie) => {
       const movieId = movie.imdbID;
@@ -35,7 +48,7 @@ async function getMovieDetails(arr) {
 function displayErrorMessage(errMsg) {
   console.log(errMsg);
   document.getElementById('content').textContent =
-    'Please check your input for spelling mistakes.';
+    'Please try again.';
 }
 
 export { getMovieId, getMovieDetails, displayErrorMessage };
