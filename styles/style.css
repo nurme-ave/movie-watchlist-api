@@ -303,7 +303,7 @@ img {
 
 @media screen and (max-width: 700px) {
   .content {
-    gap: 3em;
+    gap: 3.5em;
     padding: 5.25em 4em 4em;
   }
   
@@ -313,6 +313,11 @@ img {
   
   .contentP {
     width: 90%;
+  }
+
+  .title,
+  .activity-button {
+    font-weight: 500;
   }
 
   img {
