@@ -199,6 +199,10 @@ img {
   color: #111827;
 }
 
+.title {
+  font-weight: 600;
+}
+
 .rating {
   margin-left: 1em;
 }
@@ -209,6 +213,7 @@ img {
 
 .activity-button {
   font-family: 'Inter', sans-serif;
+  font-weight: 500;
   border: none;
   background-color: transparent;
   cursor: pointer;
@@ -313,11 +318,6 @@ img {
   
   .contentP {
     width: 90%;
-  }
-
-  .title,
-  .activity-button {
-    font-weight: 500;
   }
 
   img {
