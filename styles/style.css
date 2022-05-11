@@ -348,10 +348,6 @@ img {
 }
 
 @media screen and (max-width: 500px) {
-  .content {
-    gap: 3em;
-  }
-
   .contentDiv {
     padding-bottom: 3em;
   }
