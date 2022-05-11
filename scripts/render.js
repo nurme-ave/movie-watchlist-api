@@ -1,7 +1,6 @@
 function renderMovieDetails(details, sign='plus') {
   let detailsHtml = '';
-  detailsHtml += details
-    .map((detail) => {
+  detailsHtml += details.map((detail) => {
       const { Poster, Title, imdbRating, Runtime, Genre, imdbID, Plot } = detail;
       return `
     <div id="contentDiv" class="contentDiv">

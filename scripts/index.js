@@ -1,4 +1,4 @@
-import { getMoviesData } from './api.js';
+import { getMovieId, getMovieDetails, displayErrorMessage } from './api.js';
 import { renderMovieDetails } from './render.js';
 
 const myWatchlist = JSON.parse(localStorage.getItem('watchlist')) || [];
@@ -20,10 +20,11 @@ document.getElementById('form').addEventListener('submit', (e) => {
 });
 
 async function displaySearchResults(value) {
-    const getDetails = await getMoviesData(value);
-    toggleSpinner();
-    renderMovieDetails(getDetails);
-}
+  const getId = await getMovieId(value);
+  const getDetails = await getMovieDetails(getId);
+  toggleSpinner();
+  renderMovieDetails(getDetails);
+} 
 
 function addToWatchlist(e) {
   const target = e.target;

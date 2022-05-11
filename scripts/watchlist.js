@@ -1,3 +1,4 @@
+import { getMovieDetails } from './api.js';
 import { renderMovieDetails } from './render.js';
 
 let myWatchlist = JSON.parse(localStorage.getItem('watchlist'));
@@ -30,12 +31,6 @@ async function removeFromWatchlist(e) {
 }
 
 async function getAndRenderMovieDetails(list) {
-  const arrMovieDetails = [];
-
-  for (let movie of list) {
-    const movieResponse = await fetch(`https://www.omdbapi.com/?i=${movie}&plot=full&type=movie&apikey=f7c0d604`);
-    const movieDetails = await movieResponse.json();
-    arrMovieDetails.push(movieDetails);
-  }
-  renderMovieDetails(arrMovieDetails, 'minus');
+  const movieData = await getMovieDetails(list);
+  renderMovieDetails(movieData, 'minus');
 }

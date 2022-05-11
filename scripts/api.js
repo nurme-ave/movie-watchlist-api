@@ -1,41 +1,70 @@
-async function getMoviesData(input) {
-  const fetchController = new AbortController();
-  const arrMovieIds = [];
-  const arrMovieDetails = [];
+async function getMovieId(input) {
+  const arrMoviesId = [];
+  const firstFetchController = new AbortController();
+  const firstSignal = firstFetchController.signal;
 
-  const { signal } = fetchController;
-
-  let timer = setTimeout( () => {
-    fetchController.abort();
-  }, 15000)
+  let timer1 = setTimeout( () => {
+    firstFetchController.abort();
+    console.log('hello1')
+  }, 20000)
 
   try {
-    const moviesResponse = await fetch(`https://www.omdbapi.com/?s=${input}&plot=full&type=movie&apikey=f7c0d604`, { signal });
-    const moviesObj = await moviesResponse.json();
-    const moviesArr = moviesObj.Search;
-
-    moviesArr.map((movieId) => {
-      arrMovieIds.push(movieId.imdbID);
+    const response = await fetch(
+      `https://www.omdbapi.com/?s=${input}&plot=full&type=movie&apikey=f7c0d604`, { signal: firstSignal }
+    );
+    const moviesData = await response.json();
+    const movies = moviesData.Search;
+    movies.map((movie) => {
+      const movieId = movie.imdbID;
+      arrMoviesId.push(movieId);
     });
-
-    for (let movie of arrMovieIds) {
-      const movieResponse = await fetch(`https://www.omdbapi.com/?i=${movie}&plot=full&type=movie&apikey=f7c0d604`, { signal });
-      const movieDetails = await movieResponse.json();
-      arrMovieDetails.push(movieDetails);
-    }
-    clearTimeout(timer);
-    return arrMovieDetails;
+    clearTimeout(timer1);
+    console.log('timer cleared #1')
+    return arrMoviesId;
   } catch (err) {
-    if (err.name === 'AbortError') {
-      document.getElementById('content').innerHTML = `
-      <div class="error-messages-div">
-        <p>Sorry, the database took too long to receive a response.</p>
-        <p>Please try again.</p>
-      </div>`
-    } else {
-      document.getElementById('content').textContent = 'Please check your spelling.'
-    }
+    displayErrorMessage(err);
   }
 }
 
-export { getMoviesData };
+async function getMovieDetails(arr) {
+  const arrmovieDetails = [];
+  const secondFetchController = new AbortController();
+  const secondSignal = secondFetchController.signal;
+
+  let timer2 = setTimeout( () => {
+    secondFetchController.abort();
+    console.log('hello2')
+  }, 20000)
+
+  try {
+    for (const item of arr) {
+      const res = await fetch(
+        `https://www.omdbapi.com/?i=${item}&plot=full&type=movie&apikey=f7c0d604`, { signal: secondSignal }
+      );
+      const movieDetails = await res.json();
+      arrmovieDetails.push(movieDetails);
+    }
+    clearTimeout(timer2);
+    console.log('timer cleared #2')
+    return arrmovieDetails;
+  } catch (err) {
+    displayErrorMessage(err);
+  }
+}
+
+function displayErrorMessage(errMsg) {
+  console.log(errMsg);
+  console.log(errMsg.name);
+
+  if (errMsg.name === 'AbortError') {
+    document.getElementById('content').innerHTML = `
+    <div class="error-messages-div">
+      <p>Sorry, the database took too long to receive a response.</p>
+      <p>Please hit 'ENTER' again.</p>
+    </div>`
+  } else {
+    document.getElementById('content').textContent = 'Please check your input for spelling mistakes.'
+  }
+}
+
+export { getMovieId, getMovieDetails, displayErrorMessage };

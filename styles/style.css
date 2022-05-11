@@ -191,24 +191,16 @@ img {
   color: #DFDDDD;
 }
 
-.title {
-  position: relative;
-  font-size: 1.25rem;
-  font-weight: 500;
-}
-
-.rating {
-  position: absolute;
-  top: 0;
-  margin-left: 1em;
-}
-  
 .rating,
 .runtime,
 .activity-button {
   font-size: .9rem;
   font-weight: 400;
   color: #111827;
+}
+
+.rating {
+  margin-left: 1em;
 }
 
 .genre {
@@ -311,9 +303,14 @@ img {
 
 @media screen and (max-width: 700px) {
   .content {
+    gap: 3em;
     padding: 5.25em 4em 4em;
   }
-
+  
+  .contentDiv {
+    padding-bottom: 3em;
+  }
+  
   .contentP {
     width: 90%;
   }
@@ -346,6 +343,14 @@ img {
 }
 
 @media screen and (max-width: 500px) {
+  .content {
+    gap: 3em;
+  }
+
+  .contentDiv {
+    padding-bottom: 3em;
+  }
+
   .runtime {
     display: flex;
     flex-direction: column;
