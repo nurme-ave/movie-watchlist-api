@@ -5,8 +5,7 @@ async function getMovieId(input) {
 
   let timer1 = setTimeout( () => {
     firstFetchController.abort();
-    console.log('hello1')
-  }, 20000)
+  }, 25000)
 
   try {
     const response = await fetch(
@@ -19,7 +18,6 @@ async function getMovieId(input) {
       arrMoviesId.push(movieId);
     });
     clearTimeout(timer1);
-    console.log('timer cleared #1')
     return arrMoviesId;
   } catch (err) {
     displayErrorMessage(err);
@@ -33,8 +31,7 @@ async function getMovieDetails(arr) {
 
   let timer2 = setTimeout( () => {
     secondFetchController.abort();
-    console.log('hello2')
-  }, 20000)
+  }, 25000)
 
   try {
     for (const item of arr) {
@@ -45,7 +42,6 @@ async function getMovieDetails(arr) {
       arrmovieDetails.push(movieDetails);
     }
     clearTimeout(timer2);
-    console.log('timer cleared #2')
     return arrmovieDetails;
   } catch (err) {
     displayErrorMessage(err);
@@ -53,9 +49,6 @@ async function getMovieDetails(arr) {
 }
 
 function displayErrorMessage(errMsg) {
-  console.log(errMsg);
-  console.log(errMsg.name);
-
   if (errMsg.name === 'AbortError') {
     document.getElementById('content').innerHTML = `
     <div class="error-messages-div">
