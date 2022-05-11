@@ -1,4 +1,4 @@
-import { getMovieId, getMovieDetails, displayErrorMessage } from './api.js';
+import { getMovieId, getMovieDetails } from './api.js';
 import { renderMovieDetails } from './render.js';
 
 const myWatchlist = JSON.parse(localStorage.getItem('watchlist')) || [];
