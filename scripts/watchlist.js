@@ -1,5 +1,4 @@
-import { getMovieDetails } from './api.js';
-import { renderMovieDetails } from './render.js';
+import { renderMovieDetails } from './index.js';
 
 let myWatchlist = JSON.parse(localStorage.getItem('watchlist'));
 
@@ -7,17 +6,17 @@ document.getElementById('form').style.visibility = 'hidden';
 document.getElementById('content').addEventListener('click', removeFromWatchlist);
 
 if (myWatchlist) {
-  getAndRenderMovieDetails(myWatchlist);
+  renderMovieDetails(myWatchlist, 'minus');
 }
 
-async function removeFromWatchlist(e) {
+function removeFromWatchlist(e) {
   const target = e.target;
   if (target.tagName === 'BUTTON') {
     myWatchlist = myWatchlist.filter((item) => item != target.id);
 
     if (myWatchlist.length != 0) {
       localStorage.setItem('watchlist', JSON.stringify(myWatchlist));
-      getAndRenderMovieDetails(myWatchlist);
+      renderMovieDetails(myWatchlist, 'minus');
     } else {
       localStorage.clear();
       document.getElementById('content').innerHTML = `
@@ -28,9 +27,4 @@ async function removeFromWatchlist(e) {
       `;
     }
   }
-}
-
-async function getAndRenderMovieDetails(list) {
-  const movieData = await getMovieDetails(list);
-  renderMovieDetails(movieData, 'minus');
 }
