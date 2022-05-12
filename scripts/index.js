@@ -43,7 +43,7 @@ function renderMovieDetails(details, sign='plus') {
         .then(data => {
           arrmovieDetails.push(data);
           let detailsHtml = '';
-          detailsHtml += arrmovieDetails.map((detail) => {
+          detailsHtml = arrmovieDetails.map((detail) => {
             const { Poster, Title, imdbRating, Runtime, Genre, imdbID, Plot } = detail;
             return `
               <div id="contentDiv" class="contentDiv">
