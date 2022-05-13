@@ -1,4 +1,4 @@
-import { renderMovieDetails } from './index.js';
+import { renderMovieDetails } from './render.js';
 
 let myWatchlist = JSON.parse(localStorage.getItem('watchlist'));
 
