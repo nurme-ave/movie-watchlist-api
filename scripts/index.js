@@ -2,7 +2,6 @@ import { renderMovieDetails } from "./render.js";
 
 const myWatchlist = JSON.parse(localStorage.getItem('watchlist')) || [];
 
-document.getElementById('form').style.visibility = 'visible';
 document.getElementById('content').addEventListener('click', addToWatchlist);
 
 document.getElementById('form').addEventListener('submit', (e) => {

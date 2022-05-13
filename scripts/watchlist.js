@@ -2,7 +2,6 @@ import { renderMovieDetails } from './render.js';
 
 let myWatchlist = JSON.parse(localStorage.getItem('watchlist'));
 
-document.getElementById('form').style.visibility = 'hidden';
 document.getElementById('content').addEventListener('click', removeFromWatchlist);
 
 if (myWatchlist) {
