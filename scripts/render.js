@@ -1,14 +1,18 @@
-function renderMovieDetails(details, sign='plus') {
+function renderMovieDetails(details, sign = 'plus') {
   const arrMovieDetails = [];
-  
+
   try {
     details.map((id) => {
       fetch(`https://www.omdbapi.com/?i=${id}&plot=full&type=movie&apikey=f7c0d604`)
-        .then(response => response.json())
-        .then(movieDetails => {
+        .then((response) => response.json())
+        .then((movieDetails) => {
           arrMovieDetails.push(movieDetails);
+          console.log(arrMovieDetails)
+          return arrMovieDetails;
+        })
+        .then((arr) => {
           let detailsHtml = '';
-          detailsHtml = arrMovieDetails.map((detail) => {
+          detailsHtml = arr.map((detail) => {
             const { Poster, Title, imdbRating, Runtime, Genre, imdbID, Plot } = detail;
             return `
             <div id="contentDiv" class="contentDiv">
@@ -21,11 +25,10 @@ function renderMovieDetails(details, sign='plus') {
               </div>
             </div>
             `;
-          })
-          .join('');
+          }).join('');
           document.getElementById('content').innerHTML = detailsHtml;
-        })
-    })
+        });
+    });
   } catch (err) {
     console.log(err);
   }
