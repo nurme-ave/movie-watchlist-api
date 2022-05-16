@@ -7,7 +7,6 @@ function renderMovieDetails(details, sign = 'plus') {
         .then((response) => response.json())
         .then((movieDetails) => {
           arrMovieDetails.push(movieDetails);
-          console.log(arrMovieDetails)
           return arrMovieDetails;
         })
         .then((arr) => {
