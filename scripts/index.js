@@ -2,7 +2,9 @@ import { renderMovieDetails } from "./render.js";
 
 const myWatchlist = JSON.parse(localStorage.getItem('watchlist')) || [];
 
-document.getElementById('content').addEventListener('click', addToWatchlist);
+const contentEl = document.getElementById('content');
+
+contentEl.addEventListener('click', addToWatchlist);
 
 document.getElementById('form').addEventListener('submit', (e) => {
   e.preventDefault();
@@ -11,7 +13,7 @@ document.getElementById('form').addEventListener('submit', (e) => {
     toggleSpinner();
     getMovieIds(userInput.value);
   } else {
-    document.getElementById('content').textContent =
+    contentEl.textContent =
       'Please type in the name of the movie you would like to search for.';
   }
 });
@@ -28,7 +30,7 @@ async function getMovieIds(value) {
   } catch (err) {
     console.log(err);
     toggleSpinner();
-    document.getElementById('content').textContent =
+    contentEl.textContent =
       "Unable to find what you're looking for.";
   }
 }
@@ -45,5 +47,6 @@ function addToWatchlist(e) {
 
 function toggleSpinner() {
   document.getElementById('green-spinner').classList.toggle('active');
-  document.getElementById('content').classList.toggle('active');
+  contentEl.classList.toggle('active');
 }
+
