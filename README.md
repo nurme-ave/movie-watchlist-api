@@ -17,7 +17,7 @@ This is a personal project built by [Ave Nurme](https://www.avenurme.dev).
 
 This was my fifth solo project at the Scrimba's Frontend Developer Career Path. Solo project means that you are only provided with the Figma design file and a set of requirements you need to implement in the project. There is no hand-holding or a walk-through solution with the instructor. How you solve the challenge and implement the logic is completely up to you.
 
-Here I'm playing with two API's: 1) the first call gets the IMDB ID number from OMDb API, 2) based on the IMDB ID received from the first call, the second call retrieves the poster, title, IMDB rating, runtime, genre and full plot from the database. Once all the details have been retrieved they will be rendered on the page. The user can add movies to the watchlist and also remove them from the watchlist.
+Here I'm playing with two API's: 1) the first call gets the IMDB ID number from OMDb API, 2) based on the IMDB ID received from the first call, the second call retrieves the poster, title, IMDB rating, runtime, genre and full plot from the database. Once all the details have been retrieved they will be rendered on the page. The user can add/remove movies to/from the watchlist.
 
 More features/changes I added/made myself:
 - while the search the background is dimmed and a green search spinner appears
