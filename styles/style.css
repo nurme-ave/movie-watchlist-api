@@ -349,7 +349,7 @@ img {
 
 @media screen and (max-width: 500px) {
   .header {
-    height: 40vh;
+    height: 45vh;
   }
 
   .search-bar {
@@ -358,7 +358,7 @@ img {
 
   .content {
     justify-content: flex-start;
-    min-height: 60vh;
+    min-height: 55vh;
   }
 
   .contentDiv {
