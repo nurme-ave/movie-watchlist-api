@@ -29,7 +29,7 @@ The page was built for desktop first after which I optimized it for smaller scre
 
 ### Links
 
-- Live Site URL: [GitHub Pages](https://nurme-ave.github.io/movie-watchlist-API/)
+- Live Site URL: [GitHub Pages](https://nurme-ave.github.io/movie-watchlist-api/)
 
 ### Built with
 
