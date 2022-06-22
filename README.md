@@ -1,4 +1,4 @@
-# Movie Watchlist API - Solo Project 5 at Scrimba
+# Movie Watchlist API
 
 This is a personal project built by [Ave Nurme](https://www.avenurme.dev).
 
@@ -15,21 +15,13 @@ This is a personal project built by [Ave Nurme](https://www.avenurme.dev).
 
 ### Project Description
 
-This was my fifth solo project at the Scrimba's Frontend Developer Career Path. Solo project means that you are only provided with the Figma design file and a set of requirements you need to implement in the project. There is no hand-holding or a walk-through solution with the instructor. How you solve the challenge and implement the logic is completely up to you.
+In this project I'm playing with 2 API calls: 1) the first call gets the IMDB ID number from the OMDb API (based on user input), and 2) based on the IMDB ID received from the first call, the second call retrieves the poster, title, IMDB rating, runtime, genre and full plot from the database. Once all the details have been retrieved they will be rendered on the page.
 
-Here I'm playing with two API's: 1) the first call gets the IMDB ID number from OMDb API, 2) based on the IMDB ID received from the first call, the second call retrieves the poster, title, IMDB rating, runtime, genre and full plot from the database. Once all the details have been retrieved they will be rendered on the page. The user can add/remove movies to/from the watchlist.
+I have 2 HTML files here: 1) index.html - this is the search page with the search bar where all the search results will be displayed and the user has the option to add movies to the watchlist, and 2) watchlist.html - this page loads and displays data from local storage. By data I mean the movies the user has added to their watchlist. Here the user can also remove movies from the watchlist.
 
-More features/changes I added/made myself:
-- while the search the background is dimmed and a green search spinner appears
-- added the green line underneath the main title in the header to give the page more color
-- made the 'My Watchlist' link look like a button for better visibility and added color on hover
+I also created a nice green search spinner which is displayed while the data is being fetched.
 
-New things learned:
-- utilized localStorage and got more practice with how to add, retrieve and remove items from localStorage
-
-The page was built first for desktop and then I optimized it for mobile view.
-
-The code has been reviewed and approved by a Scrimba instructor.
+The page was built for desktop first after which I optimized it for smaller screens.
 
 ### Screenshot
 
@@ -37,7 +29,7 @@ The code has been reviewed and approved by a Scrimba instructor.
 
 ### Links
 
-- Live Site URL: [GitHub Pages](https://nurme-ave.github.io/scrimba-solo-project-movie-watchlist/)
+- Live Site URL: [GitHub Pages](https://nurme-ave.github.io/movie-watchlist-API/)
 
 ### Built with
 
