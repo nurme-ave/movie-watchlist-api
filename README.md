@@ -29,7 +29,7 @@ The page was built for desktop first after which I optimized it for smaller scre
 
 ### Links
 
-- Live Site URL: [GitHub Pages](https://nurme-ave.github.io/movie-watchlist-api/)
+- Live Site URL: [Vercel](https://movie-watchlist-api.vercel.app/)
 
 ### Built with
 
@@ -38,8 +38,4 @@ The page was built for desktop first after which I optimized it for smaller scre
 ## Author
 
 - Website - [Ave Nurme](https://www.avenurme.dev)
-- Twitter - [@ave\_nurme](https://twitter.com/ave_nurme) - Follow me doing my 3rd round of the 100DaysOfCode challenge!
-- Linkedin - [Ave Nurme](https://www.linkedin.com/in/ave-nurme)
-- YouTube - [Ave Nurme](https://www.youtube.com/channel/UC_kKIEE66Wa5bAxjqoI1A8w/videos)
 - Github - [@nurme-ave](https://github.com/nurme-ave)
-- Frontend Mentor - [@nurme-ave](https://www.frontendmentor.io/profile/nurme-ave)
